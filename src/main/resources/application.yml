@@ -1,0 +1,46 @@
+#????
+server:
+  servlet:
+    context-path: /ems_thymeleaf
+
+#Thymeleaf??
+spring:
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+#?????
+  datasource:
+    #??druid
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3336/springboot_thymeleaf
+    username: root
+    password: 20222022
+    #图片大小
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+    #暴露资源
+  web:
+    resources:
+      static-locations: classpath:/static/, file:${photo.file.dir}
+
+
+mybatis:
+  #mybatis????
+  #???
+  type-aliases-package: com.starry_sky.yang.pojo
+  mapper-locations: classpath:com/starry_sky/yang/mapper/*.xml
+
+#????
+logging:
+  level:
+    root: info
+    com.starry_sky.yang: debug
+
+#文件上传位置
+photo:
+  file:
+    dir: D:\JavaEE\SpringBoot_Thymeleaf\photos
